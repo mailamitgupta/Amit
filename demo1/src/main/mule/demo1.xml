@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e231b75d-69ba-43c7-b1ea-b4777162a2b5" >
+		<http:listener-connection host="0.0.0.0" port="8083" />
+	</http:listener-config>
+	<flow name="demo1Flow" doc:id="b631512d-aa62-4858-843b-629aff897403" >
+		<http:listener doc:name="Listener" doc:id="1b34b37e-f980-4f59-8130-c40cb8ab5490" path="/Demo2" config-ref="HTTP_Listener_config"/>
+		<set-variable value="10" doc:name="Set Variable" doc:id="b4e496b6-f238-4f60-a45c-e3b76649890b" variableName="var1"/>
+		<set-variable value="20" doc:name="Set Variable" doc:id="eb88e468-1a0c-4819-a80c-67518ba8c210" variableName="var1" />
+		<logger level="INFO" doc:name="Logger" doc:id="e1fe9528-6759-4434-a8e3-615b80c1bc2e" message='"Flow executed"'/>
+	</flow>
+</mule>
